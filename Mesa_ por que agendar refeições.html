@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mesa: por que agendar refeições</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#EEF2EF;--card:#FFFFFF;--ink:#14211C;--mut:#51615A;--line:#D3DCD7;--green:#1F7A4D;--red:#C8412B;--blue:#2B5C8A;--amber:#B98512;
+--f:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1916;--card:#17251F;--ink:#E7F0EB;--mut:#9DB0A6;--line:#294036;--green:#4CC38A;--red:#F0705A;--blue:#6FA6D8;--amber:#E2B445;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1916;--card:#17251F;--ink:#E7F0EB;--mut:#9DB0A6;--line:#294036;--green:#4CC38A;--red:#F0705A;--blue:#6FA6D8;--amber:#E2B445;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--f)}
+main{max-width:980px;margin:0 auto;padding:0 20px 60px}
+h1,h2{font-weight:800;line-height:1.08;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(34px,6.4vw,64px)}
+h2{font-size:clamp(24px,3.6vw,34px);margin-bottom:10px}
+p{max-width:68ch}
+.hero{padding:56px 0 36px}
+.hero p{color:var(--mut);font-size:19px}
+.count{background:var(--ink);color:var(--bg);border-radius:18px;padding:22px 24px;margin-top:26px;display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline}
+.count b{font-size:clamp(38px,8vw,72px);font-weight:800;font-variant-numeric:tabular-nums;color:#F0705A}
+.count span{font-size:15px;opacity:.85;max-width:44ch}
+section{padding:34px 0;border-top:1px solid var(--line)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:16px}
+.big{font-size:40px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.big small{font-size:16px;font-weight:600;color:var(--mut)}
+.lbl{color:var(--mut);font-size:15px;margin-top:6px}
+.cv{position:relative;height:300px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+button{font:600 15px var(--f);border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+label{display:block;font-weight:600;font-size:15px;margin-top:12px}
+input[type=number]{width:100%;font:600 18px var(--f);padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--green)}
+.hint{font-weight:400;color:var(--mut);font-size:13.5px}
+.out{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px}
+.out .big{color:var(--green)}
+.src li{margin:6px 0;font-size:15px}
+a{color:var(--blue)}
+.note{font-size:14.5px;color:var(--mut);margin-top:10px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+  <h1>Comida demais no lixo, gente demais sem comida.</h1>
+  <p>O Mesa nasce de um problema medido: quem cozinha não sabe quantas refeições vão ser comidas. Estes são os números que sustentam a ideia.</p>
+  <div class="count" aria-live="off">
+    <b id="cnt">0</b>
+    <span>refeições jogadas fora por domicílios em todo o mundo desde que você abriu esta página. Estimativa mínima: mais de 1 bilhão por dia em 2022 (UNEP).</span>
+  </div>
+</header>
+
+<section>
+  <h2>Quem desperdiça: o serviço de alimentação é quase um terço</h2>
+  <p>Em 2022 foram 1,05 bilhão de toneladas de alimentos desperdiçados (132 kg por pessoa, 19% do que chegou aos consumidores). Restaurantes, cantinas e refeitórios respondem por 28%. É aí que o Mesa atua.</p>
+  <div class="card"><div class="cv"><canvas id="c1" role="img" aria-label="Gráfico de rosca: domicílios 60%, serviços de alimentação 28%, varejo 12%"></canvas></div>
+  <p class="note">Passe o mouse ou toque nas fatias. Valores em milhões de toneladas. Fonte: UNEP, Food Waste Index Report 2024.</p></div>
+</section>
+
+<section>
+  <h2>O paradoxo: desperdício ao lado da fome</h2>
+  <div class="grid">
+    <div class="card"><div class="big">783 <small>milhões</small></div><div class="lbl">de pessoas passaram fome no mundo em 2022, segundo o relatório da UNEP.</div></div>
+    <div class="card"><div class="big">8–10<small>%</small></div><div class="lbl">das emissões globais de gases de efeito estufa vêm do desperdício de alimentos.</div></div>
+    <div class="card"><div class="big">116,8 <small>mi</small></div><div class="lbl">de brasileiros, entre 211,7 milhões, sem acesso pleno e permanente a alimentos (Rede Penssan, 2022, citado pela Embrapa).</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Na ponta: o que dizem os restaurantes</h2>
+  <p>Estudos em restaurantes universitários brasileiros medem sobras e resto no prato. A literatura de nutrição considera aceitável um resto-ingesta abaixo de 10%. E o caso da Sodexo mostra que medir e agir reduz o desperdício.</p>
+  <div class="card">
+    <div class="tabs" role="group" aria-label="Escolha o gráfico">
+      <button id="t1" aria-pressed="true">Sobras por comensal</button>
+      <button id="t2" aria-pressed="false">Redução do desperdício na Sodexo</button>
+    </div>
+    <div class="cv"><canvas id="c2" role="img" aria-label="Gráfico de barras com dados de restaurantes"></canvas></div>
+    <p class="note" id="n2"></p>
+  </div>
+</section>
+
+<section>
+  <h2>Simule o efeito do agendamento</h2>
+  <p>Ajuste os números de uma cozinha e veja o que uma redução do desperdício significaria. Os valores iniciais vêm dos estudos acima; o resultado é uma simulação, não uma previsão.</p>
+  <div class="card">
+    <div class="grid" style="margin-top:0">
+      <div><label for="i1">Refeições por dia</label><input id="i1" type="number" min="1" value="2000"></div>
+      <div><label for="i2">Dias de funcionamento por mês</label><input id="i2" type="number" min="1" max="31" value="22"></div>
+      <div><label for="i3">Desperdício por refeição (gramas)<br><span class="hint">Referência: média de 150 g em 5 restaurantes (UniFOA)</span></label><input id="i3" type="number" min="1" value="150"></div>
+      <div><label for="i4">Redução com o Mesa: <b id="v4">44</b>%<br><span class="hint">Referência: 44,1% da Sodexo em 2025. Não é meta do Mesa.</span></label><input id="i4" type="range" min="0" max="80" value="44"></div>
+    </div>
+    <div class="out">
+      <div><div class="big" id="o1">0</div><div class="lbl">kg de comida evitados por mês</div></div>
+      <div><div class="big" id="o2">0</div><div class="lbl">toneladas evitadas por ano</div></div>
+      <div><div class="big" id="o3">0</div><div class="lbl">refeições equivalentes por ano</div></div>
+    </div>
+    <div class="cv" style="margin-top:16px"><canvas id="c3" role="img" aria-label="Linhas do desperdício acumulado em 12 meses, com e sem Mesa"></canvas></div>
+    <p class="note">Refeições equivalentes: 0,54 kg por refeição, razão obtida de 4,2 mil toneladas = 7,8 milhões de refeições (Sodexo/Exame).</p>
+  </div>
+</section>
+
+<section class="src">
+  <h2>Fontes e limites</h2>
+  <ul>
+    <li>UNEP, Food Waste Index Report 2024: <a href="https://www.unep.org/news-and-stories/press-release/world-squanders-over-1-billion-meals-day-un-report">comunicado oficial</a>. Distribuição por setor em milhões de t: <a href="https://vajiramandravi.com/current-affairs/food-waste-index-report-2024/">resumo do relatório</a>.</li>
+    <li>ONU News em português sobre o relatório: <a href="https://news.un.org/pt/story/2024/03/1829741">news.un.org/pt</a>.</li>
+    <li>Sodexo Brasil, 2025: <a href="https://exame.com/esg/o-desperdicio-estava-no-prato-como-a-sodexo-cortou-44-das-perdas-de-alimentos-em-um-ano/">Exame</a>.</li>
+    <li>Segurança alimentar no Brasil (Rede Penssan, 2022): <a href="https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1153559/1/CNAT-1.pdf">Embrapa</a>.</li>
+    <li>Sobras em RU de Salvador: <a href="https://ensaioseciencia.pgsscogna.com.br/ensaioeciencia/article/view/9445/6426">Ensaios e Ciência</a>. Média de 5 restaurantes: <a href="https://repositorio.unifoa.edu.br/bitstreams/02de5df6-dbbf-4f24-af53-79c07f21b2ef/download">UniFOA</a>. Limite de 10% de resto-ingesta: <a href="https://files.cercomp.ufg.br/weby/up/1012/o/MONTAGEM_DO_CARD%C3%81PIO_DE_UM_RESTAURANTE_UNIVERSIT%C3%81RIO_SOB_A_%C3%93TICA_DO_DESPERD%C3%8DCIO.pdf">UFG</a>.</li>
+  </ul>
+  <p class="note">Limites: os estudos de RU são pontuais e usam métodos diferentes, então não representam todos os restaurantes. O número da UNEP inclui partes não comestíveis. O contador usa o piso de 1 bilhão de refeições por dia. A eficácia do Mesa precisa ser medida em um piloto, com as métricas do canvas (kg de sobra evitada, adesão, agendado × retirado e precisão da previsão).</p>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+var nf=new Intl.NumberFormat("pt-BR");
+function cv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+// Contador: 1 bilhão de refeições por dia, por segundo
+var cnt=document.getElementById("cnt"),perSec=1e9/86400,t0=performance.now();
+if(matchMedia("(prefers-reduced-motion: reduce)").matches){cnt.textContent="1.000.000.000 por dia"}
+else{(function tick(){cnt.textContent=nf.format(Math.floor((performance.now()-t0)/1000*perSec));requestAnimationFrame(tick)})()}
+
+var ch={};
+function build(){
+  var ink=cv("--ink"),mut=cv("--mut"),line=cv("--line"),g=cv("--green"),r=cv("--red"),b=cv("--blue");
+  Chart.defaults.color=mut;Chart.defaults.font.family='"Bricolage Grotesque",system-ui,sans-serif';
+  Object.keys(ch).forEach(function(k){ch[k].destroy()});
+  ch.c1=new Chart(c1,{type:"doughnut",data:{labels:["Domicílios","Serviços de alimentação","Varejo"],datasets:[{data:[631,290,131],backgroundColor:[b,r,cv("--amber")],borderColor:cv("--card"),borderWidth:3}]},
+    options:{maintainAspectRatio:false,cutout:"58%",plugins:{legend:{position:"bottom"},tooltip:{callbacks:{label:function(c){var s=1052,p=Math.round(c.parsed/s*100);return " "+nf.format(c.parsed)+" milhões de t ("+p+"%)"}}}}}});
+  draw2();
+  draw3();
+}
+var mode=1;
+var D2={1:{l:["RU Salvador, modelo 1: sobra","RU Salvador, modelo 2: sobra","5 restaurantes: resto no prato"],v:[245,353,57],u:"g por comensal",n:"Sobra por comensal no jantar de um RU em Salvador (dois modelos de distribuição) e resto deixado no prato, em média, em cinco restaurantes."},
+ 2:{l:["2024","2025"],v:[22.4,44.1],u:"% de redução",n:"Redução do desperdício nas operações da Sodexo no Brasil, com painéis de acompanhamento em mais de 1,3 mil unidades. Em 2025 evitou 4,2 mil toneladas."}};
+function draw2(){
+  var d=D2[mode];if(ch.c2)ch.c2.destroy();
+  document.getElementById("n2").textContent=d.n;
+  ch.c2=new Chart(c2,{type:"bar",data:{labels:d.l,datasets:[{data:d.v,backgroundColor:mode==1?[cv("--red"),cv("--red"),cv("--blue")]:[cv("--amber"),cv("--green")],borderRadius:8}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return " "+nf.format(c.parsed.y)+" "+d.u}}}},scales:{y:{beginAtZero:true,grid:{color:cv("--line")},title:{display:true,text:d.u}},x:{grid:{display:false}}}}});
+}
+function sw(m){mode=m;t1.setAttribute("aria-pressed",m==1);t2.setAttribute("aria-pressed",m==2);draw2()}
+t1.onclick=function(){sw(1)};t2.onclick=function(){sw(2)};
+
+function calc(){
+  var n=+i1.value||0,d=+i2.value||0,g=+i3.value||0,p=+i4.value;
+  v4.textContent=p;
+  var kg=n*d*g/1000,ev=kg*p/100;
+  o1.textContent=nf.format(Math.round(ev));
+  o2.textContent=nf.format(Math.round(ev*12/10)/100);
+  o3.textContent=nf.format(Math.round(ev*12/0.54));
+  return kg;
+}
+function draw3(){
+  var kg=calc(),p=+i4.value/100,a=[],bb=[],s1=0,s2=0,m=[];
+  for(var k=1;k<=12;k++){s1+=kg;s2+=kg*(1-p);a.push(Math.round(s1));bb.push(Math.round(s2));m.push("Mês "+k)}
+  if(ch.c3)ch.c3.destroy();
+  ch.c3=new Chart(c3,{type:"line",data:{labels:m,datasets:[{label:"Sem Mesa",data:a,borderColor:cv("--red"),backgroundColor:cv("--red"),tension:.25,pointRadius:2},{label:"Com Mesa",data:bb,borderColor:cv("--green"),backgroundColor:cv("--green"),tension:.25,pointRadius:2}]},
+    options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{legend:{position:"bottom"},tooltip:{callbacks:{label:function(c){return " "+c.dataset.label+": "+nf.format(c.parsed.y)+" kg"}}}},scales:{y:{beginAtZero:true,grid:{color:cv("--line")},title:{display:true,text:"kg de desperdício acumulado"}},x:{grid:{display:false},ticks:{maxTicksLimit:6}}}}});
+}
+[i1,i2,i3,i4].forEach(function(e){e.addEventListener("input",draw3)});
+build();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",build);
+</script>
+</body>
+</html>
