@@ -1,13 +1,13 @@
-# 🧱 Stack Tecnológica do Mesa
+# Stack Tecnológica do Mesa Já
 
-Este documento descreve as tecnologias escolhidas para o **Mesa**, por que cada uma faz sentido para o projeto e como elas se encaixam.
+Este documento descreve as tecnologias escolhidas para o **Mesa Já**, por que cada uma faz sentido para o projeto e como elas se encaixam.
 
 > **Stack definida:** React · TypeScript · Node.js · Express · MongoDB
 > (stack conhecida como **MERN** com TypeScript)
 
 ---
 
-## 📑 Sumário
+## Sumário
 
 1. [Visão geral](#-visão-geral)
 2. [Tecnologias](#-tecnologias)
@@ -22,7 +22,7 @@ Este documento descreve as tecnologias escolhidas para o **Mesa**, por que cada 
 
 ---
 
-## 🔭 Visão geral
+## Visão geral
 
 ```mermaid
 flowchart LR
@@ -52,7 +52,7 @@ flowchart LR
 
 ## 🛠️ Tecnologias
 
-### ⚛️ React
+### React
 
 Biblioteca para construção de interfaces baseadas em componentes.
 
@@ -68,7 +68,7 @@ Biblioteca para construção de interfaces baseadas em componentes.
 
 ---
 
-### 🔷 TypeScript
+### TypeScript
 
 Superconjunto de JavaScript com tipagem estática.
 
@@ -98,7 +98,7 @@ export interface Agendamento {
 
 ---
 
-### 🟢 Node.js
+### Node.js
 
 Ambiente de execução JavaScript no servidor.
 
@@ -112,7 +112,7 @@ Ambiente de execução JavaScript no servidor.
 
 ---
 
-### 🚂 Express
+### Express
 
 Framework minimalista para criar APIs em Node.js.
 
@@ -126,7 +126,7 @@ Framework minimalista para criar APIs em Node.js.
 
 ---
 
-### 🍃 MongoDB
+### MongoDB
 
 Banco de dados NoSQL orientado a documentos.
 
@@ -141,7 +141,7 @@ Banco de dados NoSQL orientado a documentos.
 
 ---
 
-## 🎯 Por que essa stack para o Mesa
+## Por que essa stack para o Mesa
 
 | Necessidade do projeto | Como a stack atende |
 |------------------------|---------------------|
@@ -155,7 +155,7 @@ Banco de dados NoSQL orientado a documentos.
 
 ---
 
-## 🧩 Arquitetura em camadas
+## Arquitetura em camadas
 
 ```mermaid
 flowchart TB
@@ -178,7 +178,7 @@ flowchart TB
 
 ---
 
-## 📂 Estrutura de pastas sugerida
+## Estrutura de pastas sugerida
 
 ```text
 mesa/
@@ -223,7 +223,7 @@ mesa/
 
 ---
 
-## 🗄️ Modelagem no MongoDB
+## Modelagem no MongoDB
 
 ### Coleções
 
@@ -278,7 +278,7 @@ db.agendamentos.aggregate([
 
 ---
 
-## 🔌 Endpoints da API (esboço)
+## Endpoints da API (esboço)
 
 | Método | Rota | Ator | Caso de uso |
 |--------|------|------|-------------|
@@ -297,9 +297,9 @@ db.agendamentos.aggregate([
 
 ---
 
-## 📦 Bibliotecas de apoio sugeridas
+## Bibliotecas de apoio sugeridas
 
-> ⚠️ Sugestões para discussão. Nada além das cinco tecnologias principais foi decidido.
+> Sugestões para discussão. Nada além das cinco tecnologias principais foi decidido.
 
 ### Backend
 
@@ -335,33 +335,13 @@ db.agendamentos.aggregate([
 
 ---
 
-## ⚠️ Pontos de atenção
-
-- **Regras de concorrência:** no horário de pico, dois agendamentos simultâneos podem violar limites. Use índices únicos e, quando necessário, transações do MongoDB (exigem *replica set*).
-- **Consistência entre coleções:** MongoDB não tem chaves estrangeiras. Garanta integridade (ex.: agendamento apontando para cardápio existente) na camada de service.
-- **Relacionamentos:** os dados do Mesa são bem relacionais (usuário ↔ agendamento ↔ refeição). Funciona bem no MongoDB com referências, mas evite aninhar demais documentos que mudam com frequência.
-- **Previsão de demanda:** no início, pode ser uma média histórica calculada via aggregation. Modelos mais sofisticados ficam para fases posteriores.
-- **LGPD:** armazenar o mínimo de dados pessoais, proteger senhas com hash e definir política de retenção do histórico.
-- **Segurança:** validar toda entrada, aplicar autorização por perfil (aluno não acessa rotas da cozinha) e limitar requisições (*rate limit*).
-
----
-
-## 💻 Ambiente de desenvolvimento
+## Ambiente de desenvolvimento
 
 ### Pré-requisitos
 
 - Node.js (versão LTS)
 - npm ou pnpm
 - MongoDB local ou conta no MongoDB Atlas
-
-### Variáveis de ambiente (backend)
-
-```env
-PORT=3333
-MONGODB_URI=mongodb://localhost:27017/mesa
-JWT_SECRET=troque-este-valor
-JWT_EXPIRES_IN=1d
-```
 
 ### Executando
 
@@ -389,4 +369,4 @@ npm run dev
 
 ---
 
-<p align="center">Stack escolhida para entregar rápido e evoluir com segurança. 🚀</p>
+<p align="center">Stack escolhida para entregar rápido.</p>
