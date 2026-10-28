@@ -1,4 +1,4 @@
-# 🍽️ Mesa
+# 🍽️ Mesa Já
 
 > **Produza o que vai ser consumido.**
 > Agendamento de refeições para reduzir desperdício em restaurantes universitários e cantinas escolares.
