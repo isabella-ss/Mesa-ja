@@ -1,5 +1,7 @@
 # 🍽️ Mesa Já
 
+> **Participantes do Projeto: Isabella Saboia, Luis Eduardo**
+
 > **Produza o que vai ser consumido.**
 > Agendamento de refeições para reduzir desperdício em restaurantes universitários e cantinas escolares.
 
