@@ -1,16 +1,16 @@
-# 📱 Protótipo Funcional — Mesa Já
+#  Protótipo Funcional — Mesa Já
 
 Este documento apresenta a especificação e navegação do **protótipo funcional** da aplicação **Mesa Já**, desenvolvida para otimizar o agendamento de refeições e erradicar o desperdício em restaurantes universitários (RUs) e cantinas escolares.
 
 ---
 
-## 🎯 Objetivo do Protótipo
+##  Objetivo do Protótipo
 
 O protótipo permite validar as principais jornadas de uso do sistema, demonstrando a interação em tempo real entre o **aluno** (que agenda e confirma as refeições) e a **equipe da cozinha** (que acompanha a demanda prevista e registra as métricas operacionais).
 
 ---
 
-## 🔍 Funcionalidades Demonstradas
+## Funcionalidades Demonstradas
 
 ### 1. Perfil do Aluno (Interface Mobile / PWA)
 - **Consulta de Cardápio:** Visualização intuitiva das opções de refeição separadas por data e turno (Almoço / Jantar).
@@ -26,7 +26,7 @@ O protótipo permite validar as principais jornadas de uso do sistema, demonstra
 
 ---
 
-## 🚀 Como Navegar no Protótipo
+##  Como Navegar no Protótipo
 
 1. **Acesse a simulação** pelo link oficial abaixo.
 2. **Explore as telas principais** navegando entre a visão do aluno (agendamento e ticket) e a visão do painel administrativo.
