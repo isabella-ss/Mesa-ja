@@ -315,8 +315,7 @@ erDiagram
 
 ## Pitch do Projeto
 
-<iframe src="mesajapitch.pdf" width="100%" height="600px"></iframe>
-
+[Baixar o Pitch do Projeto](mesajapitch.pdf)
 
 ---
 
