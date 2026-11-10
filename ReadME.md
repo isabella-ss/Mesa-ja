@@ -1,4 +1,4 @@
-# 🍽️ Mesa Já
+# Mesa Já
 
 > **Participantes do Projeto:** 
 > Isabella Saboia, Luis Eduardo
@@ -12,7 +12,7 @@
 
 ---
 
-## 📑 Sumário
+##  Sumário
 
 1. [Visão geral](#-visão-geral)
 2. [O problema](#-o-problema)
@@ -31,7 +31,7 @@
 
 ---
 
-## 🌱 Visão geral
+##  Visão geral
 
 O **Mesa** é um sistema que conecta quem come a quem cozinha. O aluno **agenda, cancela e confirma presença** nas refeições; a cozinha **enxerga a demanda prevista** e ajusta a produção. O resultado é menos sobra, menos falta, menos fila e menos custo.
 
@@ -39,7 +39,7 @@ O **Mesa** é um sistema que conecta quem come a quem cozinha. O aluno **agenda,
 
 ---
 
-## 🔥 O problema
+##  O problema
 
 | # | Problema | Consequência |
 |---|----------|--------------|
@@ -52,17 +52,17 @@ O **Mesa** é um sistema que conecta quem come a quem cozinha. O aluno **agenda,
 
 ---
 
-## 💡 A solução
+##  A solução
 
-- 📅 **Agendar, cancelar e confirmar presença** nas refeições
-- 🔔 **Lembretes e histórico** para o aluno
-- 📊 **Painel de demanda prevista** para a cozinha
-- 🏭 **Controle de produção** alinhado à previsão
-- ✅ **Validar retirada e registrar sobras**, gerando dados reais
+- **Agendar, cancelar e confirmar presença** nas refeições
+-  **Lembretes e histórico** para o aluno
+-  **Painel de demanda prevista** para a cozinha
+-  **Controle de produção** alinhado à previsão
+-  **Validar retirada e registrar sobras**, gerando dados reais
 
 ---
 
-## 🎯 Proposta de valor
+## Proposta de valor
 
 > **Produza o que vai ser comido.**
 > O aluno agenda, a cozinha prevê: menos sobra e menos custo.
@@ -75,14 +75,14 @@ O **Mesa** é um sistema que conecta quem come a quem cozinha. O aluno **agenda,
 
 ---
 
-## 👥 Atores e casos de uso
+##  Atores e casos de uso
 
 O sistema tem dois atores. Ambos precisam **autenticar-se**.
 
 ```mermaid
 flowchart LR
-    A([🧑 Aluno])
-    C([👩‍🍳 Cozinha])
+    A([ Aluno])
+    C([ Cozinha])
     subgraph Sistema Mesa
         AUTH((Autenticar-se))
         subgraph Aluno
@@ -108,7 +108,7 @@ flowchart LR
     C --> K1 & K2 & K3 & K4 & K5 & K6
 ```
 
-### 🧑 Aluno
+### Aluno
 
 | Caso de uso | Descrição |
 |-------------|-----------|
@@ -119,7 +119,7 @@ flowchart LR
 | Receber lembretes | Notificações sobre agendamentos e confirmações |
 | Ver histórico | Consultar refeições agendadas e retiradas |
 
-### 👩‍🍳 Cozinha
+### Cozinha
 
 | Caso de uso | Descrição |
 |-------------|-----------|
@@ -132,7 +132,7 @@ flowchart LR
 
 ---
 
-## 🔄 Fluxo principal
+##  Fluxo principal
 
 ```mermaid
 sequenceDiagram
@@ -155,7 +155,7 @@ sequenceDiagram
 
 ---
 
-## ✅ Requisitos funcionais
+##  Requisitos funcionais
 
 | ID | Requisito | Ator |
 |----|-----------|------|
@@ -177,9 +177,7 @@ sequenceDiagram
 
 ---
 
-## 🏗️ Arquitetura proposta
-
-> ⚠️ **Sugestão inicial** para guiar a discussão. Stack e componentes ainda não foram decididos.
+##  Arquitetura proposta
 
 ```mermaid
 flowchart TB
@@ -240,7 +238,7 @@ erDiagram
 
 ---
 
-## 💼 Modelo de negócio (Lean Canvas)
+## Modelo de negócio (Lean Canvas)
 
 ### 2. Segmentos de clientes
 
@@ -281,7 +279,7 @@ erDiagram
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] **Fase 0: Concepção:** Lean Canvas, casos de uso e arquitetura
 - [ ] **Fase 1: MVP:** autenticação, cardápio, agendar/cancelar, painel de demanda simples
@@ -292,7 +290,7 @@ erDiagram
 
 ---
 
-## ⚠️ Riscos e hipóteses
+## Riscos e hipóteses
 
 | Item | Tipo | Observação |
 |------|------|------------|
@@ -305,7 +303,7 @@ erDiagram
 
 ---
 
-## 🤝 Como contribuir
+## Como contribuir
 
 1. Faça um fork do repositório
 2. Crie uma branch: `git checkout -b feature/minha-feature`
@@ -315,7 +313,7 @@ erDiagram
 
 ---
 
-## 📄 Licença
+## Licença e autorizações
 
 Equipe tech isa.
 
