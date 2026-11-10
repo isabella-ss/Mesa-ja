@@ -34,7 +34,7 @@ O protótipo permite validar as principais jornadas de uso do sistema, demonstra
 
 ---
 
-## 🔗 Link de Acesso ao Protótipo
+## Link de Acesso ao Protótipo
 
 Acesse e teste o protótipo interativo através do link abaixo:
 
