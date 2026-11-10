@@ -313,6 +313,13 @@ erDiagram
 
 ---
 
+## Pitch do Projeto
+
+![Pitch](mesajapitch.pdf)
+
+
+---
+
 ## Licença e autorizações
 
 Equipe tech isa.
