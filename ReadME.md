@@ -4,7 +4,7 @@
 > Isabella Saboia, Luis Eduardo
 
 > **Produza o que vai ser consumido.**
-> Agendamento de refeições para reduzir desperdício em restaurantes universitários e cantinas escolares.
+> APLICATIVO de Agendamento de refeições para reduzir desperdício em restaurantes universitários e cantinas escolares.
 
 ![Status](https://img.shields.io/badge/status-em%20arquitetura-yellow)
 ![Fase](https://img.shields.io/badge/fase-concepção-blue)
