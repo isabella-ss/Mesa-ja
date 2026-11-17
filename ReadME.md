@@ -268,7 +268,7 @@ erDiagram
 
 ---
 
-## 📈 Métricas-chave
+## Métricas-chave
 
 | Métrica | O que mede |
 |---------|------------|
