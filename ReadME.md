@@ -321,7 +321,7 @@ erDiagram
 
 ## Licença e autorizações
 
-Equipe tech isa.
+Equipe tech Isabella & Luís
 
 ---
 
